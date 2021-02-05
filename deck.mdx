@@ -3,143 +3,144 @@ import {
   CodeSurferColumns,
   Step,
 } from "code-surfer";
-import { github, vsDark } from "@code-surfer/themes";
+import { duotoneDark, vsDark } from "@code-surfer/themes";
 
 export const theme = vsDark;
 
-# Hello 👋
-
-You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
-
----
-
 <CodeSurfer>
 
-```js title="This is a title" subtitle="and this a subtitle"
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
+```js title="Cypress Login Test"
+describe("Login Page", () => {
+  it("should let you log in", () => {
 
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
+  });
+});
 ```
 
-```js
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function adipiscing(...elit) {
-  if (!elit.sit) {
-    return [];
-  }
-
-  const sed = elit[0];
-  return eiusmod.tempor(sed) ? sed : [sed];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
+```js subtitle="Cypress"
+describe("Login Page", () => {
+  it("should let you log in", () => {
+    cy.visit("/login");
+  });
+});
 ```
 
-```diff 1[10:14],2[15:19],3[22:27],10:12
+```js diff 4[5:33] subtitle="Cypress"
+describe("Login Page", () => {
+  it("should let you log in", () => {
+    cy.visit("/login");
+    cy.get('input[type="email"]').type(
+      "stephen@dialexa.com"
+    );
+  });
+});
+```
 
+```diff 4[34:39],5,6 subtitle="Cypress"
+
+```
+
+```js subtitle="Cypress"
+describe("Login Page", () => {
+  it("should let you log in", () => {
+    cy.visit("/login");
+    cy.get('input[type="email"]').type(
+      "stephen@dialexa.com"
+    );
+    cy.get('input[type="password"]').type("Password123!");
+  });
+});
+```
+
+```js subtitle="Cypress"
+describe("Login Page", () => {
+  it("should let you log in", () => {
+    cy.visit("/login");
+    cy.get('input[type="email"]').type(
+      "stephen@dialexa.com"
+    );
+    cy.get('input[type="password"]').type("Password123!");
+    cy.get(".btn").contains(/login/i).click();
+  });
+});
+```
+
+```js subtitle="Cypress"
+describe("Login Page", () => {
+  it("should let you log in", () => {
+    cy.visit("/login");
+    cy.get('input[type="email"]').type(
+      "stephen@dialexa.com"
+    );
+    cy.get('input[type="password"]').type("Password123!");
+    cy.get(".btn").contains(/login/i).click();
+    cy.contains(/dashboard/i).should("exist");
+  });
+});
 ```
 
 </CodeSurfer>
 
 ---
 
-<CodeSurferColumns themes={[vsDark, github]}>
+<CodeSurferColumns themes={[duotoneDark, vsDark]}>
 
-<Step>
+<Step title="Change to Webdriver Login Test">
 
-```js
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
+```js file=./src/cypressLogin.js subtitle="cypress"
+
 ```
 
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
+```js file=./src/wdioLogin.js subtitle="webdriver.io"
+
 ```
 
 </Step>
 
 <Step>
 
-```js
-const lorem = (ipsum, dolor, sit) => {
-  const amet = dolor - ipsum;
-  return consectetur.adipiscing(
-    {
-      elit: sed.eiusmod(sit - dolor) / amet + 2,
-    },
-    (tempor, incididunt) => ipsum + amet * incididunt
-  );
-};
+```js file=./src/cypressLogin.js 3 subtitle="cypress"
 
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
 ```
 
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
+```js file=./src/wdioLogin.js 3 subtitle="webdriver.io"
 
-const sed = (eiusmod, tempor, incididunt) => {
-  const ut = tempor - eiusmod;
-  return labore.et(
-    {
-      amet: dolore.magna(incididunt - tempor) / ut + 2,
-    },
-    (aliqua, elit) => eiusmod + ut * elit
-  );
-};
+```
+
+</Step>
+
+<Step>
+
+```js file=./src/cypressLogin.js  4:6 subtitle="cypress"
+
+```
+
+```js file=./src/wdioLogin.js 4 subtitle="webdriver.io"
+
+```
+
+</Step>
+
+<Step>
+
+```js file=./src/cypressLogin.js 8:10 subtitle="cypress"
+
+```
+
+```js file=./src/wdioLogin.js 7:9 subtitle="webdriver.io"
+
+```
+
+</Step>
+
+<Step>
+
+```js 11 file=./src/cypressLogin.js subtitle="cypress"
+
+```
+
+```js file=./src/wdioLogin.js 11 subtitle="webdriver.io"
+
 ```
 
 </Step>
@@ -148,5 +149,48 @@ const sed = (eiusmod, tempor, incididunt) => {
 
 ---
 
-docs:  
-[codesurfer.pomb.us](https://codesurfer.pomb.us)
+<CodeSurfer>
+
+```js file=./src/wdioLogin.js title="Debugging" subtitle="webdriver.io"
+
+```
+
+```js file=./src/wdioDebugging.js 10 title="Debugging" subtitle="webdriver.io"
+
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```js file=./src/wdioShadowDom.js title="Shadow DOM" subtitle="webdriver.io"
+
+```
+
+```js file=./src/wdioShadowDom.js 4[24:30] title="Shadow DOM" subtitle="webdriver.io"
+
+```
+
+```js file=./src/cypressShadowDom.js title="Shadow DOM" subtitle="cypress"
+
+```
+
+```js file=./src/cypressShadowDom.js 4[29:36] title="Shadow DOM" subtitle="cypress"
+
+```
+
+```js file=./src/cypessAsyncTypeAhead.js title="HTTP Proxy" subtitle="cypress"
+
+```
+
+```js file=./src/cypessAsyncTypeAhead.js 3 title="HTTP Proxy" subtitle="cypress"
+
+```
+
+```js file=./src/cypessAsyncTypeAhead.js 6 title="HTTP Proxy" subtitle="cypress"
+
+```
+
+</CodeSurfer>
